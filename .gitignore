@@ -1,0 +1,23 @@
+# Arquivos e diretórios específicos do Eclipse
+.settings/
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+build/
+
+# Diretórios do Maven
+target/
+
+# Arquivos específicos do IntelliJ IDEA
+.idea/
+
+# Arquivos específicos do NetBeans
+nb-configuration.xml
+nbproject/private/
+
+# Arquivos específicos do Visual Studio Code
+.vscode/
