@@ -1,20 +1,28 @@
 package com.bean;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import com.dao.GenericDao;
 import com.model.UsuarioModel;
 
 @ViewScoped
 @ManagedBean(name = "usuarioBean")
 public class UsuarioBean {
 
+	private GenericDao<UsuarioModel, Long> usuarioDAO = new GenericDao<>(UsuarioModel.class);
+
 	private UsuarioModel usuario;
+
+	private List<UsuarioModel> usuarios;
 
 	@PostConstruct
 	private void init() {
 		usuario = new UsuarioModel();
+		usuarios = usuarioDAO.findAll();
 	}
 
 	public UsuarioModel getUsuario() {
@@ -25,40 +33,57 @@ public class UsuarioBean {
 		this.usuario = usuario;
 	}
 
-	// Method to clear form
+	public List<UsuarioModel> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<UsuarioModel> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	public void limpar() {
 		init();
 	}
 
-	// Method to save
 	public String salvar() {
 		try {
 			System.out.println("Nome: " + this.usuario.getNome());
 			System.out.println("Email: " + this.usuario.getEmail());
+			usuarioDAO.save(this.usuario);
+			init();
+			for (UsuarioModel u : usuarios) {
+				System.out.println(u);
+			}
 			return null;
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	// Method to cancel
 	public String cancelar() {
 		return "index.xhtml?faces-redirect=true";
 	}
 
-	// Method to delete
 	public String excluir() {
-		return "index.xhtml?faces-redirect=true";
+		usuarioDAO.delete(this.usuario);
+		init();
+		return null;
 	}
 
-	// Method to update
 	public String atualizar() {
-		return "index.xhtml?faces-redirect=true";
+		usuarioDAO.update(this.usuario);
+		init();
+		return null;
 	}
 
-	// Method to search
-	public void search() {
-		// Add your code here to implement the search functionality
+	public String buscarPorId() {
+		usuario = usuarioDAO.findById(this.usuario.getId());
+		return null;
+	}
+
+	public String buscarTodos() {
+		usuarioDAO.findAll();
+		return null;
 	}
 
 }
