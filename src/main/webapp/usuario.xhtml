@@ -10,7 +10,7 @@
 <h:body>
     <h1>Cadastro Usuário</h1>
 
-    <h:form>
+    <h:form id="formCadastro">
         <p>Nome:</p>
         <h:inputText value="#{usuarioBean.usuario.nome}" />
         
@@ -18,6 +18,18 @@
         <h:inputText value="#{usuarioBean.usuario.email}" />
         
         <h:commandButton value="Salvar" action="#{usuarioBean.salvar}" />
+    </h:form>
+    <h:form id="formLista">
+	    <h:dataTable value="#{usuarioBean.usuarios}" var="usuario">
+	        <h:column>
+	            <f:facet name="header">Nome</f:facet>
+	            #{usuario.nome}
+	        </h:column>
+	        <h:column>
+	            <f:facet name="header">Email</f:facet>
+	            #{usuario.email}
+	        </h:column>
+	    </h:dataTable>
     </h:form>
 </h:body>
 
