@@ -31,23 +31,23 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.6.15.Final</version>
 		</dependency>
-
 		<dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
             <scope>compile</scope>
         </dependency>
-        
-<!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet -->
-<dependency>
-    <groupId>org.jboss.weld.servlet</groupId>
-    <artifactId>weld-servlet</artifactId>
-    <version>2.4.8.Final</version>
-</dependency>
-
-
-
+		<!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet -->
+		<dependency>
+		    <groupId>org.jboss.weld.servlet</groupId>
+		    <artifactId>weld-servlet</artifactId>
+		    <version>2.4.8.Final</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.primefaces</groupId>
+		    <artifactId>primefaces</artifactId>
+		    <version>12.0.0</version>
+		</dependency>
 
 	</dependencies>
 	<build>
