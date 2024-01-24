@@ -1,17 +1,20 @@
 package com.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.ConversationScoped;
+import javax.inject.Named;
 
 import com.dao.GenericDao;
 import com.model.UsuarioModel;
 
-@ViewScoped
-@ManagedBean(name = "usuarioBean")
-public class UsuarioBean {
+@ConversationScoped
+@Named("usuarioBean")
+public class UsuarioBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private GenericDao<UsuarioModel, Long> usuarioDAO = new GenericDao<>(UsuarioModel.class);
 
